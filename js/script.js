@@ -37,3 +37,15 @@ function initializeTypedJs() {
 
 // Load Typed.js and initialize it
 loadTypedJs(initializeTypedJs);
+
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbz-l0SdoJKfdgGqiWz513RSu6fWMuA58bhmJQ-w2IeRH7AtXAOxwrUC-FKbMbpsgX0A/exec'
+			const form = document.forms['ContactForm']
+		  
+			form.addEventListener('submit', e => {
+			  e.preventDefault()
+			  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+				.then(response => alert("Thank you! your form is submitted successfully." ))
+				.then(() => {  window.location.reload(); })
+				.catch(error => console.error('Error!', error.message))
+			})
